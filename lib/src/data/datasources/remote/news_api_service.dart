@@ -13,7 +13,7 @@ class _NewsApiService implements NewsApiService {
 
   @override
   Future<Response<BreakingNewsResponseModel>> getBreakingNewsArticles(
-      {apiKey = kApiKey, country = 'us', category = '', page = 1, pageSize = 100}) async {
+      {apiKey = kApiKey, country = '', category = '', page = 1, pageSize = 100}) async {
     final queryParameters = <String, dynamic>{
       r'apiKey': apiKey,
       r'country': country,
@@ -21,11 +21,11 @@ class _NewsApiService implements NewsApiService {
       r'page': page,
       r'pageSize': pageSize
     };
-    final _result = await _dio.get(baseUrl+'/top-headlines', queryParameters: queryParameters);
+    final _result = await _dio.get('$baseUrl/top-headlines', queryParameters: queryParameters);
     final value = BreakingNewsResponseModel.fromJson(_result.data ?? <String, dynamic>{});
     final response = Response(
       data: value,
-      requestOptions: RequestOptions(path: baseUrl + '/top-headlines'),
+      requestOptions: RequestOptions(path: '$baseUrl/top-headlines'),
       statusCode: HttpStatus.ok
     );
     return response;

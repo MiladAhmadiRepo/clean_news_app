@@ -109,9 +109,7 @@ class BreakingNewsView extends HookWidget {
     final maxScroll = scrollController.position.maxScrollExtent;
     final currentScroll = scrollController.position.pixels;
     final remoteArticleBloc = BlocProvider.of<RemoteArticlesCubit>(context);
-    // final state = remoteArticleBloc.blocProcessState;
-
-    if (currentScroll == maxScroll /*&& state == BlocProcessState.idle*/) {
+    if (currentScroll == maxScroll ) {
       remoteArticleBloc. getArticles();
     }
   }

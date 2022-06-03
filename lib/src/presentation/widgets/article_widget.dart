@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-
 import '../../domain/entities/article.dart';
 
 class ArticleWidget extends StatelessWidget {
@@ -29,7 +28,6 @@ class ArticleWidget extends StatelessWidget {
           children: [
             _buildImage(context),
             _buildTitleAndDescription(),
-            _buildRemovableArea(),
           ],
         ),
       ),
@@ -115,28 +113,12 @@ class ArticleWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildRemovableArea() {
-    if (isRemovable) {
-      return GestureDetector(
-        onTap: _onRemove,
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Icon(Ionicons.trash_outline, color: Colors.red),
-        ),
-      );
-    }
-    return Container();
-  }
-
   void _onTap() {
-    if (onArticlePressed != null) {
-      onArticlePressed(article);
-    }
+    //todo details of aricle
+    // if (onArticlePressed != null) {
+    //   onArticlePressed(article);
+    // }
   }
 
-  void _onRemove() {
-    if (onRemove != null) {
-      onRemove(article);
-    }
-  }
+
 }
